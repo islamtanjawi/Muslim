@@ -3,13 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="description" content="بصيرة: فهرس معرفي منظم للمسائل الفقهية الإسلامية مع أبواب الفقه والشروح والمصادر ومساعد يبحث في المراجع الموثوقة.">
+  <meta name="description" content="بصيرة: موسوعة فقهية سنية تعليمية مع تخريج الأحاديث، الرد على الشبهات، مسارات طلب العلم، البحث في المسائل والمراجع الموثقة.">
+  <link rel="canonical" href="https://islamtanjawi.github.io/Muslim/">
+  <meta property="og:title" content="بصيرة | الفقه والسنة وطلب العلم">
+  <meta property="og:description" content="أبواب الفقه، الأحاديث الصحيحة، تفنيد الشبهات بالدليل، ومسارات تعلم متدرجة.">
+  <meta property="og:type" content="website">
   <meta name="theme-color" content="#0c3028">
+  <meta name="color-scheme" content="light dark">
   <title>بصيرة | دليل الفقه الإسلامي</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=4">
   <script src="config.js"></script>
-  <script src="app.js" defer></script>
+  <script src="app.js?v=4" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">انتقل للمحتوى</a>
@@ -19,38 +24,69 @@
       <nav class="desktop-nav" aria-label="القائمة الرئيسية">
         <a href="#/home" data-nav="home" class="active">الرئيسية</a>
         <a href="#/library" data-nav="library">الموسوعة</a>
-        <a href="#/assistant" data-nav="assistant">المساعد الفقهي</a><a href="#/guides" data-nav="guides">الشروح والفتاوى</a>
+        <a href="#/hadith" data-nav="hadith">الأحاديث</a><a href="#/doubts" data-nav="doubts">الشبهات</a><a href="#/learning" data-nav="learning">طلب العلم</a><a href="#/assistant" data-nav="assistant">المساعد الفقهي</a><a href="#/guides" data-nav="guides">الشروح والفتاوى</a>
         <a href="#/bookmarks" data-nav="bookmarks">المحفوظات</a>
         <a href="#/references" data-nav="references">المصادر والمنهج</a>
       </nav>
       <div class="header-actions"><button id="themeToggle" class="icon-button" aria-label="تغيير المظهر" title="تغيير المظهر">☾</button><button id="mobileToggle" class="icon-button mobile-only" aria-label="فتح القائمة" aria-expanded="false">☰</button></div>
     </div>
     <nav id="mobileNav" class="mobile-nav container" aria-label="قائمة الهاتف" hidden>
-      <a href="#/home">الرئيسية</a><a href="#/library">الموسوعة</a><a href="#/assistant">المساعد الفقهي</a><a href="#/guides">الشروح والفتاوى</a><a href="#/bookmarks">المحفوظات</a><a href="#/references">المصادر والمنهج</a>
+      <a href="#/home">الرئيسية</a><a href="#/library">الموسوعة</a><a href="#/hadith">الأحاديث النبوية</a><a href="#/doubts">الرد على الشبهات</a><a href="#/learning">مسارات العلم</a><a href="#/assistant">المساعد الفقهي</a><a href="#/guides">الشروح والفتاوى</a><a href="#/bookmarks">المحفوظات</a><a href="#/references">المصادر والمنهج</a>
     </nav>
   </header>
+  <div id="loadError" class="load-error container" role="alert" hidden><strong>تعذر تحميل قاعدة المعرفة</strong><p>تأكد من رفع ملفات JSON بجانب index.html وأن الموقع مفتوح عبر GitHub Pages أو خادم محلي.</p><button class="button subtle" type="button" id="retryLoad">إعادة المحاولة</button></div>
   <main id="main" tabindex="-1">
     <section data-page="home">
       <div class="hero"><div class="container hero-layout"><div class="hero-copy">
         <div class="eyebrow"><span class="eyebrow-dot"></span> معرفة موثقة، وسؤال مسؤول</div>
         <h1>اسأل، وابحث، <span>وتفقّه ببصيرة.</span></h1>
-        <p>بوابتك لاستكشاف أبواب الفقه الإسلامي: العبادات، البيوع، الأسرة، الأحكام المعاصرة وغيرها. ابدأ بالمعلومة التمهيدية، ثم ارجع إلى المصادر وأهل الاختصاص.</p>
+        <p>بوابتك لاستكشاف الفقه والسنة النبوية والتعلم المنهجي والرد على الشبهات: العبادات، البيوع، الأسرة، الأحكام المعاصرة وغيرها. ابدأ بالمعلومة التمهيدية، ثم ارجع إلى المصادر وأهل الاختصاص.</p>
         <form id="heroSearchForm" class="hero-search" role="search"><span class="search-mark">⌕</span><input id="heroSearch" placeholder="ابحث عن حكم البيع بالتقسيط، الوضوء، الميراث..." aria-label="البحث في المسائل"><button type="submit" class="button primary">ابحث الآن <span aria-hidden="true">←</span></button></form>
         <div class="hero-chips"><span>موضوعات شائعة:</span><button data-query="البيع بالتقسيط">البيع بالتقسيط</button><button data-query="الصلاة">الصلاة</button><button data-query="الزكاة">الزكاة</button></div>
       </div><div class="hero-art" aria-hidden="true"><div class="art-ornament"><div class="art-inner">۞</div></div><div class="art-verse"><span>﴿ وَقُل رَّبِّ زِدْنِي عِلْمًا ﴾</span><small>سورة طه، الآية 114</small></div></div></div></div>
       <div class="container">
         <div class="notice-banner"><span class="notice-icon">ⓘ</span><p><strong>تنبيه علمي:</strong> الموقع دليل للبحث والتعلّم، وليس جهة إفتاء رسمية. المسائل الخاصة بالأموال والطلاق والمواريث ونحوها تحتاج إلى عالم مؤهل ومعرفة تفاصيل الحالة.</p></div>
+        <div id="homeStats" class="home-stats" aria-live="polite"></div>
         <section class="section-pad" aria-labelledby="categoryTitle"><div class="section-head"><div><span class="section-kicker">استكشف العلوم</span><h2 id="categoryTitle">أبواب الفقه والمعرفة الإسلامية</h2><p>اختر الباب الأقرب إلى سؤالك، ثم تصفح المسائل المتعلقة به.</p></div><a class="text-link" href="#/library">جميع المسائل <span aria-hidden="true">←</span></a></div><div id="homeCategories" class="category-grid"></div></section>
         <section class="assistant-promo"><div class="promo-icon">✧</div><div><span class="section-kicker light">اسأل بصيرة</span><h2>سؤالك بداية المعرفة</h2><p>ابحث بلغة طبيعية بين مواد الموقع، وافتح المسائل ذات الصلة. ويعرض الأدلة والآراء المنسوبة لأصحابها، ويمكن توصيل محرك ذكاء اصطناعي عبر خادم آمن.</p><a href="#/assistant" class="button light-button">جرّب المساعد الفقهي <span aria-hidden="true">←</span></a></div><div class="promo-quote">«ما الحكم في البيع عبر الإنترنت؟»<div>مسائل ذات صلة • مراجع • تنبيهات الاختلاف</div></div></section>
-        <section class="section-pad"><div class="section-head"><div><span class="section-kicker">ابدأ من هنا</span><h2>موضوعات للقراءة</h2><p>مداخل علمية أولية مع روابط الأدلة المباشرة وحالة المراجعة.</p></div></div><div id="featuredTopics" class="topic-grid"></div></section>
+        <section class="section-pad"><div class="section-head"><div><span class="section-kicker">ابدأ من هنا</span><h2>موضوعات للقراءة</h2><p>مداخل تعليمية أولية تبيّن المصدر وحدود الاستدلال وحالة المراجعة.</p></div></div><div id="featuredTopics" class="topic-grid"></div></section>
+      <section class="knowledge-shortcuts"><a href="#/hadith"><span class="short-icon">✧</span><strong>المكتبة الحديثية</strong><small>أحاديث صحيحة مع تخريج وشروح ومصادر</small></a><a href="#/doubts"><span class="short-icon">◈</span><strong>الرد على الشبهات</strong><small>الجواب بالدليل والمنهج العلمي دون تجريح</small></a><a href="#/learning"><span class="short-icon">▤</span><strong>تطوير العلم</strong><small>20 درسًا ومنهج تعلم يحفظ تقدمك</small></a></section>
       </div>
     </section>
-    <section data-page="library" hidden><div class="page-banner container"><span class="section-kicker">المكتبة الفقهية</span><h1>تصفّح المسائل</h1><p>فهرس منظم حسب الأبواب. المواد المعلّمة «تمهيدي» تحتوي ملخصًا أوليًا، أما «فهرس» فهي عناوين لا تحتوي إجابات حتى تُوثّق وتُراجع علميًا.</p></div><div class="container library-layout"><aside class="library-sidebar"><div class="aside-title">الأبواب <button id="resetFilter">الكل</button></div><div id="libraryCategories" class="category-filter"></div></aside><div class="library-main"><div class="filter-panel"><div class="input-with-icon"><span>⌕</span><input id="librarySearch" type="search" placeholder="اكتب اسم المسألة أو كلمة من مضمونها..." aria-label="البحث في الفهرس"></div><div class="filter-line"><div id="libraryCount" class="result-count" aria-live="polite"></div><label for="statusFilter" class="select-label">نوع المادة <select id="statusFilter"><option value="all">الكل</option><option value="intro">مواد مسندة</option><option value="index">عناوين الفهرس</option></select></label></div></div><div id="libraryResults" class="topic-grid"></div><div id="libraryEmpty" class="empty-state" hidden><div>⌕</div><h3>لا توجد نتائج مطابقة</h3><p>جرّب كلمات أخرى أو تصفح الباب الأقرب.</p></div><div class="load-wrap"><button id="loadMore" class="button subtle">عرض المزيد من المسائل</button></div></div></div></section>
+    <section data-page="library" hidden><div class="page-banner container"><span class="section-kicker">المكتبة الفقهية</span><h1>تصفّح المسائل</h1><p>فهرس منظم حسب الأبواب. المواد ذات المراجع تتضمن مدخلًا تعليميًا موثقَ المصدر لا فتوى معتمدة، وأما العناوين الأخرى فلا تُنشَر بشأنها أحكام غير مسندة.</p></div><div class="container library-layout"><aside class="library-sidebar"><div class="aside-title">الأبواب <button id="resetFilter">الكل</button></div><div id="libraryCategories" class="category-filter"></div></aside><div class="library-main"><div class="filter-panel"><div class="input-with-icon"><span>⌕</span><input id="librarySearch" type="search" placeholder="اكتب اسم المسألة أو كلمة من مضمونها..." aria-label="البحث في الفهرس"></div><div class="filter-line"><div id="libraryCount" class="result-count" aria-live="polite"></div><label for="statusFilter" class="select-label">نوع المادة <select id="statusFilter"><option value="all">الكل</option><option value="intro">مواد مسندة</option><option value="index">عناوين الفهرس</option></select></label></div></div><div id="libraryResults" class="topic-grid"></div><div id="libraryEmpty" class="empty-state" hidden><div>⌕</div><h3>لا توجد نتائج مطابقة</h3><p>جرّب كلمات أخرى أو تصفح الباب الأقرب.</p></div><div class="load-wrap"><button id="loadMore" class="button subtle">عرض المزيد من المسائل</button></div></div></div></section>
     <section data-page="assistant" hidden><div class="page-banner container"><span class="section-kicker">المساعد الفقهي</span><h1>اسأل بصيرة</h1><p>اكتب سؤالك باللغة العربية. يبدأ المساعد من مصادر الموقع، وعند تشغيل الخادم يستطيع البحث في مصادر خارجية محددة ويرفق روابطها. ليس بديلًا عن الفتوى الشخصية.</p></div><div class="container chat-layout"><aside class="chat-side"><div class="side-card"><div class="side-card-icon">✦</div><h3>كيف تحصل على جواب أدق؟</h3><p>حدّد نوع المعاملة أو العبادة، وتفاصيلها المهمة، والمذهب الذي تريد الاطلاع عليه إن لزم.</p><div class="chat-rule">✓ إيراد روابط الأدلة المباشرة</div><div class="chat-rule">✓ التصريح بحدود المعلومات</div><div class="chat-rule">✓ نسبة أقوال العلماء لمصادرها</div><div class="chat-rule">✓ بحث خارجي عند ربط الخادم الآمن</div></div><div class="side-card faint"><h3>مهم قبل الاعتماد</h3><p>القرارات في الطلاق والميراث والمعاملات المعقدة تحتاج إلى جهة إفتاء مختصة. لا تكتب بيانات شخصية حساسة في المحادثة.</p></div></aside><div class="chat-panel"><div class="chat-topbar"><div class="chat-identity"><span class="bot-avatar">✺</span><div><strong>مساعد بصيرة</strong><small id="assistantMode">البحث في فهرس الموقع</small></div></div><button id="clearChat" class="clear-button">مسح المحادثة</button></div><div id="chatMessages" class="chat-messages" aria-live="polite"><div class="chat-bubble bot"><div class="bubble-author">✺ بصيرة</div><p>السلام عليكم ورحمة الله وبركاته. اكتب سؤالك، وسأبحث لك في المسائل الموجودة في الموقع وأعرض ما يفيدك دون ادعاء إصدار فتوى.</p></div></div><div id="chatSuggestions" class="chat-suggestions"><button data-ask="ما ضوابط البيع عبر الإنترنت؟">ما ضوابط البيع عبر الإنترنت؟</button><button data-ask="ما معنى نواقض الوضوء؟">ما معنى نواقض الوضوء؟</button><button data-ask="كيف أبدأ فهم أحكام الزكاة؟">كيف أبدأ فهم أحكام الزكاة؟</button></div><form id="chatForm" class="chat-composer"><label class="sr-only" for="chatInput">اكتب سؤالك</label><textarea id="chatInput" rows="2" placeholder="مثال: أبيع سلعة عبر الإنترنت وأحصل المال عند التسليم، ما المسائل التي ينبغي أن أفهمها؟" required maxlength="1500"></textarea><button id="sendChat" class="send-button" type="submit" aria-label="إرسال السؤال">←</button></form><p class="chat-footnote">عند عدم تشغيل الخادم، يعرض الموقع مصادر مقترحة للبحث ولا يدّعي أنه أجرى بحثًا حيًا. لا تُدخل بيانات حساسة.</p></div></div></section>
+
+    <section data-page="hadith" hidden>
+      <div class="page-banner container"><span class="section-kicker">من السنة النبوية</span><h1>مكتبة الأحاديث الصحيحة</h1><p>مختارات موضوعية من الصحيحين، مع التخريج ورقم الحديث وخلاصة تعليمية. المقتطف ليس متن الحديث كاملًا؛ انقر للمراجعة على المصدر الأصلي.</p></div>
+      <div class="container knowledge-layout">
+        <div class="knowledge-notice"><strong>التوثيق قبل النقل</strong><span>لا ننشر أحاديث ضعيفة أو موضوعة على أنها صحيحة. ورود الحديث في الصحيحين لا يعني أن كل تطبيق فقهي له متفق عليه، لذا يُرجع إلى شروح الحديث ومجموع الأدلة.</span></div>
+        <div class="knowledge-controls"><label for="hadithSearch">ابحث في الحديث وموضوعه</label><input id="hadithSearch" type="search" placeholder="مثال: البيوع، الصدق، الصيام، الصلاة..."/><span id="hadithCount" aria-live="polite"></span></div>
+        <div id="hadithCategories" class="pill-filters" aria-label="تصنيفات الأحاديث"></div>
+        <div id="hadithResults" class="knowledge-grid"></div>
+      </div>
+    </section>
+    <section data-page="doubts" hidden>
+      <div class="page-banner container"><span class="section-kicker">بالحجة والرحمة</span><h1>تفنيد الشبهات والأسئلة الشائعة</h1><p>فهم الشبهة أولًا، ثم بيان الدليل ومجال الاستدلال. الأسئلة ليست إساءة في حد ذاتها، ولا تُنسب أقوال إلى العلماء دون مصدر.</p></div>
+      <div class="container knowledge-layout">
+        <div class="knowledge-notice"><strong>منهج القسم</strong><span>نحدّد الدعوى، ونجمع أدلتها، ونتحقق من النص وسياقه، ونفرّق بين القطعي والظني والخلاف المعتبر. نناقش الأفكار دون مهاجمة أصحابها.</span></div>
+        <div class="knowledge-controls"><label for="doubtsSearch">ابحث في الشبهات</label><input id="doubtsSearch" type="search" placeholder="مثال: القيامة، الحديث، المال، اختلاف المذاهب..."/><span id="doubtsCount" aria-live="polite"></span></div>
+        <div id="doubtsResults" class="question-grid"></div>
+      </div>
+    </section>
+    <section data-page="learning" hidden>
+      <div class="page-banner container"><span class="section-kicker">منهج تدريجي</span><h1>مسارات طلب العلم</h1><p>تدرّج في الأساسيات والحديث والمعاملات ومنهج الرد على الشبهات. احفظ تقدمك على هذا الجهاز، واقرأ الدليل قبل وضع علامة إتمام الدرس.</p></div>
+      <div class="container knowledge-layout">
+        <div class="knowledge-notice"><strong>اجعل العلم عملًا</strong><span>تقدّم شخصي محلي على جهازك، لا شهادة شرعية ولا حكم على مستوى معرفتك. يتطلب الإفتاء دراسة علمية متخصصة وإجازة أهل العلم.</span></div>
+        <div class="progress-summary"><div><strong>إنجاز المسارات</strong><p id="learningProgressText">0 من 20 درسًا</p></div><div class="progress-bar"><span id="learningProgressBar"></span></div><button class="button subtle" id="resetLearning" type="button">تصفير التقدم</button></div>
+        <div id="learningResults" class="tracks-grid"></div>
+        <div class="section-head video-head"><div><span class="section-kicker">مواد مقترحة للمراجعة</span><h2>مرئيات من الروابط التي أرسلتها</h2><p>نعرض عنوان الفيديو ورابطه فقط. لم يُستخرج تفريغ كامل أو تُعتمد محتويات الفيديو كفتاوى أو مصادر نصية.</p></div></div>
+        <div id="videoResults" class="knowledge-grid"></div>
+      </div>
+    </section>
     <section data-page="guides" hidden>
       <div class="page-banner container"><span class="section-kicker">تعلّم بالدليل</span><h1>الشروح والفتاوى المنقولة</h1><p>ملخصات تمهيدية مع المصادر، وقرارات فقهية منشورة في جهاتها الأصلية. الفتوى المنقولة تُنسب إلى جهتها ولا يصدرها الموقع بنفسه.</p></div>
       <div class="container guide-layout">
-       <div class="guide-notice">القرآن الكريم والسنة الثابتة أصل الاستدلال، مع فهم أهل العلم من المذاهب السنية المعتبرة. الأحكام المستنبطة لا تُلصق بالنصوص دون شرح وتوثيق، وجميع الشروح الحالية مسودات لم تعتمدها هيئة علمية.</div>
+       <div class="guide-notice">القرآن الكريم والسنة الثابتة أصل الاستدلال، مع فهم أهل العلم من المذاهب السنية المعتبرة. الأحكام المستنبطة لا تُلصق بالنصوص دون شرح وتوثيق، وهذه مواد تعليمية مؤشرة بمراجعها، ولم تصدر لها شهادة اعتماد من هيئة إفتاء.</div>
        <div class="guide-feature-grid"><a href="https://iifa-aifi.org/ar/1849.html" target="_blank" rel="noopener noreferrer" class="guide-feature"><strong>قرار البيع بالتقسيط</strong><span>مجمع الفقه الإسلامي الدولي، القرار 64 (7/2)</span><em>اقرأ القرار الأصلي ↗</em></a><a href="https://iifa-aifi.org/1789.html" target="_blank" rel="noopener noreferrer" class="guide-feature"><strong>العقود بوسائل الاتصال</strong><span>مجمع الفقه الإسلامي الدولي، القرار 52 (6/3)</span><em>اقرأ القرار الأصلي ↗</em></a><a href="https://www.dar-alifta.org/ar" target="_blank" rel="noopener noreferrer" class="guide-feature"><strong>فتاوى منشورة من جهة إفتاء</strong><span>دار الإفتاء المصرية — ابحث عن الفتوى على الموقع الأصلي</span><em>افتح الموقع ↗</em></a></div>
        <div class="section-head"><div><span class="section-kicker">المواد الموجودة</span><h2>شروح مبنية على نصوص محددة</h2><p id="guidesCount"></p></div></div><div id="guidesTopics" class="topic-grid"></div><div class="load-wrap"><button type="button" id="loadGuides" class="button subtle">المزيد من الشروح</button></div>
       </div>
@@ -63,10 +99,16 @@
   <a href="https://dorar.net/feqhia" target="_blank" rel="noopener noreferrer"><strong>الموسوعة الفقهية — الدرر السنية</strong><span>أحكام فقهية وأقوال العلماء مع أدلتها</span><em>فتح المصدر ↗</em></a>
   <a href="https://iifa-aifi.org/ar" target="_blank" rel="noopener noreferrer"><strong>مجمع الفقه الإسلامي الدولي</strong><span>قرارات جماعية للمسائل المالية والمعاصرة</span><em>فتح المصدر ↗</em></a>
   <a href="https://www.dar-alifta.org/ar" target="_blank" rel="noopener noreferrer"><strong>دار الإفتاء المصرية</strong><span>فتاوى منشورة باسم الجهة مع تفاصيل السؤال</span><em>فتح المصدر ↗</em></a>
-</div></section><section class="roadmap"><h2>ضوابط التعامل مع القرآن والسنة</h2><p>النص القرآني يُذكر مع رقم الآية. الحديث يُذكر مع كتابه ورقمه وحكم أهل الحديث عليه إن احتاج. لا يُنسب قول ابن القيم أو غيره إلى النبي ﷺ، ولا يُستنبط حكم من آية مبتورة دون السياق وبقية الأدلة. المقارنة بين المذاهب تحتاج تحريرًا علميًا، ولا يوجد اعتماد شرعي شامل لهذه النسخة.</p><h2>ماذا بعد هذه النسخة؟</h2><p>إضافة نصوص محققة مع الإحالات المباشرة لصفحات المراجع، ومراجعة علمية متخصصة، وعرض الأقوال حسب المذهب، وفهرسة المصادر الأصلية، ولوحة تحكم لإدارة المحتوى.</p><p>يُمنع نسخ موسوعات أو كتب كاملة إلى قاعدة البيانات دون التحقق من تراخيصها وحقوق استخدامها.</p></section></div></section>
+</div></section><section class="reference-section" aria-labelledby="sourceIndexTitle">
+  <h2 id="sourceIndexTitle">فهرس الأدلة والمراجع داخل الموقع</h2>
+  <p class="source-intro">يمكنك البحث في المراجع المرتبطة بمسائل الموسوعة، والانتقال مباشرة إلى نصها الأصلي. وجود مرجع لا يعني وحده أن كل استنباط منه قد تمت مراجعته شرعيًا.</p>
+  <div class="source-controls"><label for="sourceSearch">البحث في المصدر</label><input id="sourceSearch" type="search" placeholder="ابحث عن كتاب أو آية أو حديث أو عالم..."><label for="sourceType">نوع المرجع</label><select id="sourceType"><option value="all">الكل</option><option value="quran">القرآن</option><option value="hadith">الحديث</option><option value="scholar">أقوال العلماء</option><option value="council">قرارات المجامع</option></select></div>
+  <p id="sourceCount" class="result-count" aria-live="polite"></p><div id="sourceLibrary" class="source-index-grid"></div><div class="load-wrap"><button id="moreSources" class="button subtle" type="button">عرض المزيد من المراجع</button></div>
+</section>
+<section class="roadmap"><h2>ضوابط التعامل مع القرآن والسنة</h2><p>النص القرآني يُذكر مع رقم الآية. الحديث يُذكر مع كتابه ورقمه وحكم أهل الحديث عليه إن احتاج. لا يُنسب قول ابن القيم أو غيره إلى النبي ﷺ، ولا يُستنبط حكم من آية مبتورة دون السياق وبقية الأدلة. المقارنة بين المذاهب تحتاج تحريرًا علميًا، ولا يوجد اعتماد شرعي شامل لهذه النسخة.</p><h2>ماذا بعد هذه النسخة؟</h2><p>إضافة نصوص محققة مع الإحالات المباشرة لصفحات المراجع، ومراجعة علمية متخصصة، وعرض الأقوال حسب المذهب، وفهرسة المصادر الأصلية، ولوحة تحكم لإدارة المحتوى.</p><p>يُمنع نسخ موسوعات أو كتب كاملة إلى قاعدة البيانات دون التحقق من تراخيصها وحقوق استخدامها.</p></section></div></section>
   </main>
   <div id="topicModal" class="modal-shell" hidden><div class="modal-backdrop" data-close-modal></div><article class="topic-modal" role="dialog" aria-modal="true" aria-labelledby="topicTitle"><button class="modal-close" id="closeTopic" aria-label="إغلاق">×</button><div id="topicDetail"></div></article></div>
-  <footer class="footer"><div class="container footer-inner"><div><a href="#/home" class="footer-brand">✺ بصيرة</a><p>رحلة معرفة تقوم على الأمانة العلمية واحترام تنوع الفقه الإسلامي.</p></div><div><strong>استكشف</strong><a href="#/library">الموسوعة</a><a href="#/assistant">المساعد الفقهي</a><a href="#/guides">الشروح والفتاوى</a><a href="#/references">المصادر والمنهج</a></div><div><strong>المعلومات</strong><a href="privacy.html">سياسة الخصوصية</a><a href="terms.html">شروط الاستخدام</a><small>نسخة أولية تعليمية • ليست جهة إصدار فتوى</small></div></div><div class="container footer-bottom">بصيرة © <span id="year"></span> • المواد المنشورة تعليمية وليست إجازة علمية أو فتاوى شخصية.</div></footer>
+  <footer class="footer"><div class="container footer-inner"><div><a href="#/home" class="footer-brand">✺ بصيرة</a><p>رحلة معرفة تقوم على الأمانة العلمية واحترام تنوع الفقه الإسلامي.</p></div><div><strong>استكشف</strong><a href="#/library">الموسوعة</a><a href="#/hadith">الأحاديث النبوية</a><a href="#/doubts">الرد على الشبهات</a><a href="#/learning">مسارات العلم</a><a href="#/assistant">المساعد الفقهي</a><a href="#/guides">الشروح والفتاوى</a><a href="#/references">المصادر والمنهج</a></div><div><strong>المعلومات</strong><a href="privacy.html">سياسة الخصوصية</a><a href="terms.html">شروط الاستخدام</a><small>نسخة أولية تعليمية • ليست جهة إصدار فتوى</small></div></div><div class="container footer-bottom">بصيرة © <span id="year"></span> • المواد المنشورة تعليمية وليست إجازة علمية أو فتاوى شخصية.</div></footer>
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 </body>
 </html>

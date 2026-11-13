@@ -1,0 +1,324 @@
+[
+  {
+    "id": "T01",
+    "title": "أساسيات المسلم",
+    "subtitle": "العقيدة والطهارة والصلاة والصيام",
+    "icon": "☾",
+    "lessons": [
+      {
+        "id": "01",
+        "title": "أركان الإيمان والإسلام",
+        "description": "فهم أركان الدين والتمييز بين الإيمان والعمل.",
+        "sources": [
+          {
+            "type": "quran",
+            "label": "القرآن الكريم، 2:285",
+            "url": "https://quran.com/2/285"
+          },
+          {
+            "type": "hadith",
+            "label": "صحيح البخاري، 8",
+            "url": "https://sunnah.com/bukhari:8"
+          }
+        ]
+      },
+      {
+        "id": "02",
+        "title": "الطهارة والوضوء",
+        "description": "قراءة آية الوضوء والتعرف إلى الطهارة قبل تفاصيل المذاهب.",
+        "sources": [
+          {
+            "type": "quran",
+            "label": "القرآن الكريم، 5:6",
+            "url": "https://quran.com/5/6"
+          }
+        ]
+      },
+      {
+        "id": "03",
+        "title": "الصلاة وأوقاتها",
+        "description": "ماذا يلزم المبتدئ وما الذي يحتاج إلى شرح فقهي مفصل؟",
+        "sources": [
+          {
+            "type": "quran",
+            "label": "القرآن الكريم، 4:103",
+            "url": "https://quran.com/4/103"
+          },
+          {
+            "type": "hadith",
+            "label": "صحيح البخاري، 631",
+            "url": "https://sunnah.com/bukhari:631"
+          }
+        ]
+      },
+      {
+        "id": "04",
+        "title": "الصيام والنية",
+        "description": "مدخل للصيام والأعذار وآداب الصائم.",
+        "sources": [
+          {
+            "type": "quran",
+            "label": "القرآن الكريم، 2:185",
+            "url": "https://quran.com/2/185"
+          },
+          {
+            "type": "hadith",
+            "label": "صحيح البخاري، 1904",
+            "url": "https://sunnah.com/bukhari:1904"
+          }
+        ]
+      },
+      {
+        "id": "05",
+        "title": "الزكاة والحقوق المالية",
+        "description": "التعرف إلى المصارف وفرق الواجب عن التطوع.",
+        "sources": [
+          {
+            "type": "quran",
+            "label": "القرآن الكريم، 9:60",
+            "url": "https://quran.com/9/60"
+          },
+          {
+            "type": "hadith",
+            "label": "صحيح البخاري، 1417",
+            "url": "https://sunnah.com/bukhari:1417"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "T02",
+    "title": "الحديث والتحقق",
+    "subtitle": "كيفية قراءة السنة ونسبة الأحاديث",
+    "icon": "✧",
+    "lessons": [
+      {
+        "id": "01",
+        "title": "كيف نتثبت من النسبة؟",
+        "description": "تمييز الكتاب ورقم الحديث ودرجة الرواية.",
+        "sources": [
+          {
+            "type": "quran",
+            "label": "القرآن الكريم، 49:6",
+            "url": "https://quran.com/49/6"
+          }
+        ]
+      },
+      {
+        "id": "02",
+        "title": "الحديث في سياقه",
+        "description": "تجنب اجتزاء النص من سياق الرواية.",
+        "sources": [
+          {
+            "type": "hadith",
+            "label": "صحيح البخاري، 52",
+            "url": "https://sunnah.com/bukhari:52"
+          }
+        ]
+      },
+      {
+        "id": "03",
+        "title": "السيرة والاقتداء",
+        "description": "التفريق بين السيرة والأحكام الملزمة.",
+        "sources": [
+          {
+            "type": "hadith",
+            "label": "صحيح البخاري، 631",
+            "url": "https://sunnah.com/bukhari:631"
+          }
+        ]
+      },
+      {
+        "id": "04",
+        "title": "علوم القرآن الأساسية",
+        "description": "التفسير والقراءات وأسباب النزول.",
+        "sources": [
+          {
+            "type": "quran",
+            "label": "القرآن الكريم، 4:82",
+            "url": "https://quran.com/4/82"
+          },
+          {
+            "type": "quran",
+            "label": "القرآن الكريم، 3:7",
+            "url": "https://quran.com/3/7"
+          }
+        ]
+      },
+      {
+        "id": "05",
+        "title": "الآداب النبوية",
+        "description": "الصدق والنصيحة وعدم الإيذاء.",
+        "sources": [
+          {
+            "type": "hadith",
+            "label": "صحيح مسلم، 55a",
+            "url": "https://sunnah.com/muslim:55"
+          },
+          {
+            "type": "hadith",
+            "label": "صحيح البخاري، 10",
+            "url": "https://sunnah.com/bukhari:10"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "T03",
+    "title": "فقه المعاملات الحديثة",
+    "subtitle": "من أحكام البيع إلى الاقتصاد الرقمي",
+    "icon": "⚖",
+    "lessons": [
+      {
+        "id": "01",
+        "title": "البيع والعقد",
+        "description": "مفهوم البيع والعقود الصحيحة.",
+        "sources": [
+          {
+            "type": "quran",
+            "label": "القرآن الكريم، 2:275",
+            "url": "https://quran.com/2/275"
+          }
+        ]
+      },
+      {
+        "id": "02",
+        "title": "الصدق والغرر",
+        "description": "الحد من الجهالة والغش وبيان العيوب.",
+        "sources": [
+          {
+            "type": "hadith",
+            "label": "صحيح مسلم، 1513",
+            "url": "https://sunnah.com/muslim:1513"
+          },
+          {
+            "type": "hadith",
+            "label": "صحيح البخاري، 2079",
+            "url": "https://sunnah.com/bukhari:2079"
+          }
+        ]
+      },
+      {
+        "id": "03",
+        "title": "البيع بالتقسيط",
+        "description": "متى تُذكر الزيادة ومتى يتعلق الأمر بربا التأخير؟",
+        "sources": [
+          {
+            "type": "fatwa",
+            "label": "قرار مجمع الفقه الإسلامي الدولي 64",
+            "url": "https://iifa-aifi.org/ar/1849.html"
+          }
+        ]
+      },
+      {
+        "id": "04",
+        "title": "تطبيقات البيع الإلكتروني",
+        "description": "التعاقد عن بُعد والبيانات والمخاطر.",
+        "sources": [
+          {
+            "type": "fatwa",
+            "label": "قرار العقود بوسائل الاتصال",
+            "url": "https://iifa-aifi.org/1789.html"
+          }
+        ]
+      },
+      {
+        "id": "05",
+        "title": "كيف أكتب سؤال فتوى عن معاملة؟",
+        "description": "تفاصيل لازمة: الأطراف والتمويل والتسليم والزيادات.",
+        "sources": [
+          {
+            "type": "quran",
+            "label": "القرآن الكريم، 17:36",
+            "url": "https://quran.com/17/36"
+          },
+          {
+            "type": "hadith",
+            "label": "صحيح البخاري، 2079",
+            "url": "https://sunnah.com/bukhari:2079"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "T04",
+    "title": "المنهج في الرد على الشبهات",
+    "subtitle": "الحجة والسياق والأدب في الحوار",
+    "icon": "◈",
+    "lessons": [
+      {
+        "id": "01",
+        "title": "تحديد الدعوى",
+        "description": "ما الذي قيل بالضبط ومن أين جاء؟",
+        "sources": [
+          {
+            "type": "quran",
+            "label": "القرآن الكريم، 17:36",
+            "url": "https://quran.com/17/36"
+          }
+        ]
+      },
+      {
+        "id": "02",
+        "title": "التحقق من النص",
+        "description": "هل الدليل صحيح وكامل وفي موضعه؟",
+        "sources": [
+          {
+            "type": "quran",
+            "label": "القرآن الكريم، 49:6",
+            "url": "https://quran.com/49/6"
+          }
+        ]
+      },
+      {
+        "id": "03",
+        "title": "متى نرجع لأهل الاختصاص؟",
+        "description": "علم الحديث والتفسير والفقه والعلوم الأخرى.",
+        "sources": [
+          {
+            "type": "quran",
+            "label": "القرآن الكريم، 16:43",
+            "url": "https://quran.com/16/43"
+          }
+        ]
+      },
+      {
+        "id": "04",
+        "title": "التثبت من دعاوى الغيب",
+        "description": "عدم تصديق تواريخ نهاية العالم دون برهان.",
+        "sources": [
+          {
+            "type": "quran",
+            "label": "القرآن الكريم، 7:187",
+            "url": "https://quran.com/7/187"
+          },
+          {
+            "type": "quran",
+            "label": "القرآن الكريم، 31:34",
+            "url": "https://quran.com/31/34"
+          }
+        ]
+      },
+      {
+        "id": "05",
+        "title": "الرد بأدب ووضوح",
+        "description": "التفريق بين الدعوى وصاحبها والحفاظ على حسن الخطاب.",
+        "sources": [
+          {
+            "type": "quran",
+            "label": "القرآن الكريم، 16:125",
+            "url": "https://quran.com/16/125"
+          },
+          {
+            "type": "hadith",
+            "label": "صحيح البخاري، 69",
+            "url": "https://sunnah.com/bukhari:69"
+          }
+        ]
+      }
+    ]
+  }
+]

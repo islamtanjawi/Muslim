@@ -1,33 +1,53 @@
-"""Local consistency and safe-citation validator. Run before publishing."""
+"""Verify structured content and app asset references. Does NOT certify religious rulings."""
 from pathlib import Path
 from collections import Counter
 from urllib.parse import urlparse
-import json
-p=Path(__file__).parent
-T=json.loads((p/'topics.json').read_text(encoding='utf8'))
-C=json.loads((p/'categories.json').read_text(encoding='utf8'))
-E=json.loads((p/'evidence.json').read_text(encoding='utf8'))
-assert len(T)==253 and len(C)==24
-ids={t['id'] for t in T}
-assert len(ids)==len(T)
-assert {t['category'] for t in T}=={c['name'] for c in C}
-for cat in C:assert cat['count']==sum(t['category']==cat['name'] for t in T)
-for t in T:
- has=t['id'] in E['entries']
- assert (t['status']=='intro')==has,t
- if has:
-  entry=E['entries'][t['id']]
-  assert entry['sourceIds'] and entry['answer'] and entry['reviewStatus'] in ('editorial_draft','reviewed')
-  for sid in entry['sourceIds']:
-   s=E['sources'][sid]
-   assert s['type'] in ('quran','hadith','council','scholar')
-   assert s['quoteMode'] in ('verbatim','excerpt','summary')
+import json,re
+r=Path(__file__).parent
+read=lambda f:json.loads((r/f).read_text(encoding='utf8'))
+t,c,e,h,d,l,v=(read(x) for x in ['topics.json','categories.json','evidence.json','hadith.json','doubts.json','learning.json','videos.json'])
+assert len(c)==24 and len(t)==253 and len({x['id'] for x in t})==len(t)
+assert len(h)==21 and len(d)==12 and len(l)==4 and sum(len(x['lessons']) for x in l)==20 and len(v)==2
+for cat in c:assert cat['count']==sum(x['category']==cat['name'] for x in t)
+for x in t:
+ entry=e['entries'].get(x['id']);assert (x['status']=='intro')==bool(entry),x
+ if entry:
+  assert entry['answer'] and entry['sourceIds'] and entry['reviewStatus']
+  for id in entry['sourceIds']:
+   s=e['sources'][id]
    assert s['quote'] and s['citation'] and s['by']
+   assert s['quoteMode'] in ['excerpt','verbatim','summary']
+   assert s['type'] in ['hadith','quran','scholar','council']
    assert urlparse(s['url']).scheme=='https'
-for src in E['sources'].values():
- assert urlparse(src['url']).hostname in ('quran.com','dorar.net','iifa-aifi.org','www.islamweb.net')
-assert "fetch('topics.json')" in (p/'app.js').read_text()
-assert "state.categories.slice(0,12)" not in (p/'app.js').read_text()
-assert './topics.json' in (p/'worker.js').read_text()
-print(f"PASS: {len(C)} categories, {len(T)} topics, {len(E['entries'])} introductory entries, {len(E['sources'])} references")
-print('Status:',dict(Counter(t['status'] for t in T)))
+for x in h:
+ assert x['citation'] and x['excerpt'] and 'sunnah.com'==urlparse(x['url']).hostname
+for x in d:
+ assert x['answer'] and x['sources'] and all(urlparse(s['url']).scheme=='https' for s in x['sources'])
+for x in l:
+ for lesson in x['lessons']: assert lesson['sources']
+for video in v: assert urlparse(video['url']).hostname=='youtu.be' and video['reviewedTranscript'] is False
+html=(r/'index.html').read_text();app=(r/'app.js').read_text()
+for f in ['topics.json','categories.json','evidence.json','hadith.json','doubts.json','learning.json','videos.json']:
+ assert (r/f).exists() and f"fetch('{f}')" in app
+for page in ['home','library','hadith','doubts','learning','assistant','guides','bookmarks','references']:
+ assert f'data-page="{page}"' in html and page in app
+assert 'data/' not in html and "data/" not in app
+print(f'PASS: {len(c)} doors, {len(t)} indexed topics, {len(e["entries"])} with evidence, {len(t)-len(e["entries"])} without detailed evidence')
+print(f'PASS: {len(h)} selected sahih hadith, {len(d)} doubt explanations, {len(l)} learning tracks, {len(v)} video links')
+print('All JSON in root, links syntax checked; live URL reachability and scholarly approval NOT guaranteed.')
+
+# V4 extra checks: no general/misapplied source used for topics that need a specific ruling.
+assert e['entries']['F009']['sourceIds']==['H-BUK-5736']
+assert e['entries']['F181']['sourceIds']==['H-BUK-2363']
+for fid in ['F106','F109','F111','F128','F164','F166','F185','F186','F187','F245','F251']:
+ assert fid not in e['entries']
+assert 'id="sourceLibrary"' in html and 'id="homeStats"' in html
+assert 'function renderSources()' in app
+assert 'styles.css?v=4' in html and 'app.js?v=4' in html
+from bs4 import BeautifulSoup
+soup=BeautifulSoup(html,'html.parser')
+ids=[tag.get('id') for tag in soup.find_all(id=True)]
+assert len(ids)==len(set(ids)), 'duplicate HTML ids'
+for url in ['https://iifa-aifi.org/1789.html','https://iifa-aifi.org/ar/1849.html']:
+ assert url in html
+print('V4 checks: citation corrections, reference index, assets and unique IDs passed')
