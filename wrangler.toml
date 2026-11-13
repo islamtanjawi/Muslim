@@ -1,0 +1,9 @@
+name = "basira-fiqh-assistant"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+
+[vars]
+# Replace with your exact GitHub Pages site origin, without /repo/ path.
+# Example: https://YOUR-USERNAME.github.io
+ALLOWED_ORIGIN = "https://YOUR-USERNAME.github.io"
+OPENAI_MODEL = "gpt-4.1-mini"
